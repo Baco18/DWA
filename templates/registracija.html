@@ -1,0 +1,60 @@
+{% extends "bootstrap/base.html" %} {% import "bootstrap/wtf.html" as wtf %} {% block html_attribs %} lang="en" {% endblock %} {% block title %} Registracija {% endblock %} {% block styles %} {{super()}}
+
+
+<!-- Main CSS-->
+<link rel="stylesheet" href="{{url_for('.static', filename='css/register.css')}}">
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="{{url_for('login')}}">RINGER</a>
+        </div>
+    </div>
+</nav>
+
+<body background="static/images/pic.jpg"></body>
+
+<div class="container">
+    <div class="row centered-form">
+        <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
+            <div class="panel panel-default">
+                
+                <div class="panel-body">
+                    <form role="form" method="POST" action="/registracija">
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    {{ form.hidden_tag() }} {{ wtf.form_field(form.name) }}
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    {{ form.hidden_tag() }} {{ wtf.form_field(form.lastname) }}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            {{ form.hidden_tag() }} {{ wtf.form_field(form.email) }}
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                <div class="form-group">
+                                    {{ form.hidden_tag() }} {{ wtf.form_field(form.password) }}
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <input type="submit" value="Registriraj se" class="btn btn-info btn-block">
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} {% block scripts %}
+
+{{super()}} {% endblock %}

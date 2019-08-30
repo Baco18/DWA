@@ -1,0 +1,107 @@
+{% extends "bootstrap/base.html" %} {% import "bootstrap/wtf.html" as wtf %} {% block title %} Login studenta {% endblock %} {% block content %} {% block styles %} {{super()}}
+{% endblock %}
+<head><link rel="stylesheet" href="{{url_for('.static', filename='css/style.css')}}"> </head>
+<div>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="{{ url_for('login') }}">RINGER</a>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn">STUDENTI </button>
+            
+            <div class="dropdown-content">
+               <a href="{{ url_for('login') }}">PRIJAVA</a>
+               <a href="{{ url_for('registracija') }}">REGISTRACIJA</a>
+            </div>
+        </div> 
+            <div class="dropdown">
+                <button class="dropbtn">PROFESORI </button>
+               
+                <div class="dropdown-content">
+                   <a href="{{ url_for('prof_log') }}">PRIJAVA</a>
+                   <a href="{{ url_for('prof_reg') }}">REGISTRACIJA</a>
+                </div>
+            </div> 
+    </div>
+</nav>
+ 
+<style>
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+    
+.dropdown .dropbtn {
+    font-size: 19px; 
+    border: none;
+    outline: none;
+    color: rgb(155, 155, 155);
+    padding: 14px 16px;
+    background-color: inherit;
+}
+
+.dropdown-content {
+    border-radius: 20px;
+    display: none;
+    position:absolute;
+    background-color: rgb(39, 37, 37);
+    min-width: 160px;
+    box-shadow: 0px 6px 6px 6px rgb(6, 83, 250);
+    padding: 12px 16px;
+    z-index: 1;
+}
+
+.dropdown-content a {
+    float: none;
+    color: wheat;
+    padding: 12px 16px;
+    text-decoration: brown;
+    display: block;
+    text-align: left;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+</style>       
+
+<body background="static/images/pic.jpg"></body>
+
+
+<div class="container ">
+    <div class="row centered-form">
+        <div class="col-xs-12 col-sm-8 col-md-4 login-form-1  col-sm-offset-2 col-md-offset-4">
+            <!--<div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4"></div>-->
+            <h3>Student</h3>
+            <form class="form-group" method="POST" action="/login">
+                <div class="form-group">
+ 
+                    {{ form.hidden_tag() }} {{ wtf.form_field(form.name) }}
+                   
+                </div>
+                <div class="form-group">
+
+                    {{ form.hidden_tag() }} {{ wtf.form_field(form.lastname) }}
+
+                </div>
+                <div class="form-group">
+
+                    {{ form.hidden_tag() }} {{ wtf.form_field(form.email) }}
+               
+                <div class="form-group">
+
+                    {{ form.hidden_tag() }} {{ wtf.form_field(form.password) }}
+                </div>
+                 </div>
+                <div class="form-group">
+                    <input type="submit" class="btnSubmit" value="Login" />
+                </div>
+
+            </form>
+        </div>
+    </div>
+        {% endblock %} {% block scripts %}
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        {% endblock %}
